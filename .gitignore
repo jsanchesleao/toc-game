@@ -1,0 +1,4 @@
+node_modules/
+dist/app.css
+dist/app.js
+.vscode/
