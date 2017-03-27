@@ -1,5 +1,5 @@
 const { resolve } = require('path');
-const webpack = require('webpack');;
+const webpack = require('webpack');
 
 module.exports = {
   entry: [
@@ -52,20 +52,12 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.scss$/,
-        use: [
-          'style-loader',
-          'css-loader?modules',
-          'sass-loader',
-        ],
-      },
-      {
         test: /\.css$/,
         use: [
           'style-loader',
-          'css-loader?modules',
-          'postcss-loader',
-        ],
+          'css-loader?modules&camelCase',
+          'postcss-loader'
+        ]
       },
     ],
   },

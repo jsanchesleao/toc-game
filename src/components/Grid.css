@@ -1,0 +1,44 @@
+.grid-container {
+  display: inline-block;
+  margin: 20px;
+}
+
+.grid-cell {
+  display: table-cell;
+  width:  100px;
+  height: 100px;
+  vertical-align: middle;
+  text-align: center;
+
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+}
+
+.grid-DR  { background-image: url('/images/dr.png'); }
+.grid-DRA { background-image: url('/images/dra.png'); }
+.grid-LD  { background-image: url('/images/ld.png'); }
+.grid-LDA { background-image: url('/images/lda.png'); }
+.grid-LDR { background-image: url('/images/ldr.png'); }
+.grid-LDU { background-image: url('/images/ldu.png'); }
+.grid-LR  { background-image: url('/images/lr.png'); }
+.grid-LRA { background-image: url('/images/lra.png'); }
+.grid-LRU { background-image: url('/images/lru.png'); }
+.grid-LU  { background-image: url('/images/lu.png'); }
+.grid-LUA { background-image: url('/images/lua.png'); }
+.grid-LUD { background-image: url('/images/lud.png'); }
+.grid-UD  { background-image: url('/images/ud.png'); }
+.grid-UR  { background-image: url('/images/ur.png'); }
+.grid-URA { background-image: url('/images/ura.png'); }
+.grid-URD { background-image: url('/images/urd.png'); }
+
+
+.grid-content-cell {
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 20px;
+}
+
+.grid-content-cell:hover {
+  background-color: #ddd;
+}

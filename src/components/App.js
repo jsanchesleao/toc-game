@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './App.css';
+import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import PlayerArea from './PlayerArea.js'
 import {store, initialState} from '../store'

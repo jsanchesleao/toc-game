@@ -10,3 +10,7 @@
 .label-cell {
   width: 100px;
 }
+
+.grid-cell {
+  color: red;
+}

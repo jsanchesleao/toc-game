@@ -1,48 +1,25 @@
 import React from 'react'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
+import Dialog from 'material-ui/Dialog'
 import FlatButton from 'material-ui/FlatButton'
-import Graph from 'react-graph-vis'
 import * as data from '../graph.js'
+import Grid from './Grid.js'
 
+import * as graphActions from '../actions/graphActions'
 
-const flowGraph = {
-  graph: data.graph,
-  options: {
-    width: '100%',
-    height: '100%',
-    nodes: {
-      borderWidth: 4,
-      size: 30,
-      
-    },
-    layout: {
-      hierarchical: {
-        direction: "LR"
-      }
-    },
-    interaction: {
-      zoomView: false,
-      dragView: false
-    },
-    edges: {
-      color: "#000000",
-      width: 4,
-      length: 200
-    }
-    
-  },
-  events: {
-    select: ({nodes, edges}) => {
-      console.log('Selected nodes: ', nodes)
-      console.log('Selected edges:', edges)
-    }
-  }
-}
 
 const FlowGraph = (props) => (
-  <Graph graph={flowGraph.graph} options={flowGraph.options} events={flowGraph.events} 
-         style={{width: "800px", height:"600px"}}
-  />
+  <Grid data={data.grid} rows={5} cols={10} onClickNode={graphActions.displayNode} />
+)
+
+const NodeDisplay = props => (
+  <Dialog
+    open={props.node !== 'grid'}
+    actions={[<FlatButton label="Close" primary={true} onClick={graphActions.displayGrid} />]}>
+
+    {JSON.stringify(props.node)}
+    
+  </Dialog>
 )
 
 export default (props) => (
@@ -53,9 +30,8 @@ export default (props) => (
       subtitle="manage the workers" 
     />
 
-    
     <FlowGraph />
-    
+    <NodeDisplay node={props.state.graph.display} />
 
     <CardText>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.

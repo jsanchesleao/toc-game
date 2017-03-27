@@ -25,7 +25,7 @@ export default ({state}) => (
       <Paper style={{margin: 20}} zDepth={1}>
         <div className="row">
           <div className="col-md-9">
-            <GraphArea />
+            <GraphArea state={state} />
           </div>
           <div className="col-md-3">
             <ManagementArea />
