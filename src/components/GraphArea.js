@@ -9,7 +9,11 @@ import * as graphActions from '../actions/graphActions'
 
 
 const FlowGraph = (props) => (
-  <Grid data={data.grid} rows={5} cols={10} onClickNode={graphActions.displayNode} />
+  <Grid data={data.grid} 
+        rows={5} 
+        cols={10} 
+        factory={props.factory}
+        onClickNode={graphActions.displayNode} />
 )
 
 const NodeDisplay = props => (
@@ -30,7 +34,7 @@ export default (props) => (
       subtitle="manage the workers" 
     />
 
-    <FlowGraph />
+    <FlowGraph factory={props.state.factory} />
     <NodeDisplay node={props.state.graph.display} />
 
     <CardText>

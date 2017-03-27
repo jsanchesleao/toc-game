@@ -1,6 +1,8 @@
 import React from 'react'
 import styles from './Grid.css'
 
+import {DepartmentMiniature} from './Department'
+
 const clickNode = (value, onclick) => function(e) {
   e.preventDefault();
   if (onclick) {
@@ -8,13 +10,17 @@ const clickNode = (value, onclick) => function(e) {
   }
 }
 
+const getNodeState = function(id, factoryState) {
+  return factoryState.nodes[id]
+}
+
 const GridNode = (props) => (
   <div onClick={clickNode(props.value, props.onClick)} className={styles.gridCell + ' ' + styles.gridContentCell}>
-    {props.value.name}
+    <DepartmentMiniature data={props.value} state={getNodeState(props.value.id, props.factory)} />
   </div>
 )
 
-const GridCell = ({row, col, data, onClickNode}) => {
+const GridCell = ({row, col, data, onClickNode, factory}) => {
   const value = data[row][col]
 
   switch(value) {
@@ -53,7 +59,7 @@ const GridCell = ({row, col, data, onClickNode}) => {
     case '':
       return <div className={styles.gridCell + ' ' + styles.gridNull}></div> 
     default:
-      return <GridNode value={value} onClick={onClickNode} />
+      return <GridNode value={value} onClick={onClickNode} factory={factory} />
   }
 
 }
@@ -61,7 +67,13 @@ const GridCell = ({row, col, data, onClickNode}) => {
 const GridRow = (props) => {
   let cols = []
   for (let i = 0; i < props.cols; i++) {
-    cols.push(<GridCell data={props.data} row={props.row} col={i} key={i} onClickNode={props.onClickNode} />)
+    cols.push(<GridCell data={props.data}
+                        row={props.row}
+                        col={i}
+                        key={i}
+                        onClickNode={props.onClickNode}
+                        factory={props.factory}
+                        />)
   }
 
   return (
@@ -75,7 +87,13 @@ export default (props) => {
   let rows = []
   for (let i = 0; i < props.rows; i++) {
     rows.push(
-      <GridRow data={props.data} cols={props.cols} row={i} key={i} onClickNode={props.onClickNode}/>
+      <GridRow data={props.data}
+               cols={props.cols}
+               row={i}
+               key={i}
+               onClickNode={props.onClickNode}
+               factory={props.factory}
+               />
     )
   }
 
